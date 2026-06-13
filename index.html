@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Exam Twin</title>
+
+<style>
+
+body{
+background-color:#f4f8ff;
+font-family:Arial, sans-serif;
+padding:40px;
+}
+
+.container{
+background:white;
+width:70%;
+margin:auto;
+padding:30px;
+border-radius:15px;
+box-shadow:0px 0px 15px lightgray;
+text-align:center;
+}
+
+h1{
+color:#1e3a8a;
+font-size:50px;
+}
+
+.subtitle{
+font-size:18px;
+color:#666;
+margin-bottom:25px;
+}
+
+input{
+width:300px;
+padding:12px;
+margin:8px;
+border-radius:10px;
+border:1px solid gray;
+font-size:16px;
+}
+
+button{
+background:#1e3a8a;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2747b0;
+}
+
+.report{
+margin-top:30px;
+background:#eef4ff;
+padding:20px;
+border-radius:15px;
+text-align:left;
+}
+
+.report h2{
+color:#1e3a8a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Exam Twin</h1>
+
+<p class="subtitle">
+Beyond Marks: Measuring Understanding, Not Just Scores
+</p>
+
+<input type="text" id="name" placeholder="Student Name">
+
+<br>
+
+<input type="text" id="subject" placeholder="Subject">
+
+<br>
+
+<input type="text" id="topic" placeholder="Topic / Chapter">
+
+<br>
+
+<input type="number" id="score" placeholder="Score (0-100)">
+
+<br>
+
+<input type="number" id="confidence" placeholder="Confidence Level (1-10)">
+
+<br><br>
+
+<button onclick="analyze()">
+Generate Learning Twin
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function analyze(){
+
+let name =
+document.getElementById("name").value;
+
+let subject =
+document.getElementById("subject").value;
+
+let topic =
+document.getElementById("topic").value;
+
+let score =
+parseInt(document.getElementById("score").value);
+
+let confidence =
+parseInt(document.getElementById("confidence").value);
+
+let understanding = "";
+let confidenceStatus = "";
+let advice = "";
+let strength = "";
+let weakness = "";
+
+if(score >= 80){
+
+understanding =
+"Excellent Understanding";
+
+strength =
+"Strong conceptual understanding";
+
+weakness =
+"Minor improvement needed";
+
+advice =
+"Attempt advanced questions and challenge yourself.";
+
+}
+
+else if(score >= 60){
+
+understanding =
+"Moderate Understanding";
+
+strength =
+"Basic concepts understood";
+
+weakness =
+"Application and problem-solving";
+
+advice =
+"Practice more questions and revise key concepts.";
+
+}
+
+else{
+
+understanding =
+"Needs Improvement";
+
+strength =
+"Willingness to learn";
+
+weakness =
+"Core concepts require strengthening";
+
+advice =
+"Revise fundamentals and practice regularly.";
+
+}
+
+if(confidence >= 8 && score < 60){
+
+confidenceStatus =
+"Overconfidence Detected";
+
+}
+
+else if(confidence <= 4 && score >= 80){
+
+confidenceStatus =
+"Underconfidence Detected";
+
+}
+
+else{
+
+confidenceStatus =
+"Confidence Matches Performance";
+
+}
+
+document.getElementById("result").innerHTML =
+
+'<div class="report">' +
+
+'<h2>Learning Twin Report</h2>' +
+
+'<p><b>Student:</b> ' + name + '</p>' +
+
+'<p><b>Subject:</b> ' + subject + '</p>' +
+
+'<p><b>Topic:</b> ' + topic + '</p>' +
+
+'<p><b>Score:</b> ' + score + '/100</p>' +
+
+'<p><b>Knowledge Index:</b> ' + score + '%</p>' +
+
+'<p><b>Understanding Level:</b> ' + understanding + '</p>' +
+
+'<p><b>Confidence Analysis:</b> ' + confidenceStatus + '</p>' +
+
+'<p><b>Strength:</b> ' + strength + '</p>' +
+
+'<p><b>Improvement Area:</b> ' + weakness + '</p>' +
+
+'<p><b>Recommendation:</b> ' + advice + '</p>' +
+
+'</div>';
+
+}
+
+</script>
+
+</body>
+
+</html>
+
